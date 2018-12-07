@@ -1,0 +1,22 @@
+.sentiment-great {
+    color: rgba(62, 205, 14, 1);
+}
+.sentiment-ok {
+    color:green;
+}
+.sentiment-neutral {
+    color:blue;
+}
+.sentiment-not-ok {
+    color: orange;
+}
+.sentiment-bad {
+    color: red;
+}
+
+tbody tr {
+    max-height: 20em;
+    overflow-y: scroll;
+    display: inline-block;
+    white-space: pre-wrap;
+}
