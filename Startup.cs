@@ -1,3 +1,4 @@
+using EmailSentimentAnalysisWebsite.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,13 @@ namespace EmailSentimentAnalysisWebsite
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            ConfigureDependencies(services);
+        }
+
+        private static void ConfigureDependencies(IServiceCollection services)
+        {
+            services.AddScoped(typeof(IEmailQueryService), typeof(EmailQueryService));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

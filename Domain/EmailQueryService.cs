@@ -9,7 +9,6 @@ namespace EmailSentimentAnalysisWebsite.Domain
     {
         public EmailQueryService()
         {
-            
         }
 
         public Task<IEnumerable<EmailSentimentModel>> GetLatestEmailSentimentAsync()

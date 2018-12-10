@@ -33,6 +33,11 @@ export class NavMenu extends Component {
                 <Glyphicon glyph='th-list' /> Fetch data
               </NavItem>
             </LinkContainer>
+            <LinkContainer to={'/mail'}>
+              <NavItem>
+                <Glyphicon glyph='th-list' /> Email sentiment
+              </NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

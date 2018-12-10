@@ -14,10 +14,9 @@ namespace EmailSentimentAnalysisWebsite.Controllers
     {
         private readonly IEmailQueryService _emailQueryService;
 
-        public EmailSentimentController()
+        public EmailSentimentController(IEmailQueryService emailQueryService)
         {
-            //TODO: Replace one DI in place
-            _emailQueryService = new EmailQueryService();
+            _emailQueryService = emailQueryService;
         }
     
         [HttpGet("[action]")]

@@ -17,6 +17,11 @@
 tbody tr {
     max-height: 20em;
     overflow-y: scroll;
-    display: inline-block;
     white-space: pre-wrap;
+}
+
+.trow {
+    max-height: 13em;
+    overflow-y:auto;
+    overflow-x:hidden;
 }
