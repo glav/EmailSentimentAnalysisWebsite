@@ -37,7 +37,8 @@ namespace EmailSentimentAnalysisWebsite
         {
             services.AddScoped(typeof(IEmailQueryService), typeof(EmailQueryService));
             var endpoint = (string)Configuration.GetValue(typeof(string), "ApiEndpoint");
-            var config = new AppSettingsConfig { ApiEndpoint = endpoint };
+            var useDummyValue = (bool)Configuration.GetValue(typeof(bool), "UseDummyData");
+            var config = new AppSettingsConfig { ApiEndpoint = endpoint, UseDummyData = useDummyValue };
             services.AddSingleton(typeof(AppSettingsConfig), config);
         }
 
@@ -53,7 +54,6 @@ namespace EmailSentimentAnalysisWebsite
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
