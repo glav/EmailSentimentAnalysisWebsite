@@ -1,4 +1,5 @@
 using EmailSentimentAnalysisWebsite.Domain;
+using EmailSentimentAnalysisWebsite.Domain.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,9 +33,12 @@ namespace EmailSentimentAnalysisWebsite
             ConfigureDependencies(services);
         }
 
-        private static void ConfigureDependencies(IServiceCollection services)
+        private void ConfigureDependencies(IServiceCollection services)
         {
             services.AddScoped(typeof(IEmailQueryService), typeof(EmailQueryService));
+            var endpoint = (string)Configuration.GetValue(typeof(string), "ApiEndpoint");
+            var config = new AppSettingsConfig { ApiEndpoint = endpoint };
+            services.AddSingleton(typeof(AppSettingsConfig), config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

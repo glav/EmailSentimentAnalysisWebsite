@@ -7,8 +7,10 @@ namespace EmailSentimentAnalysisWebsite.Domain
 {
     public class EmailQueryService : IEmailQueryService
     {
-        public EmailQueryService()
+        private readonly AppSettingsConfig _config;
+        public EmailQueryService(AppSettingsConfig config)
         {
+            _config = config;
         }
 
         public Task<IEnumerable<EmailSentimentModel>> GetLatestEmailSentimentAsync()
