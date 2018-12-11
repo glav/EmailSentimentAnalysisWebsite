@@ -25,21 +25,21 @@ export class EmailSentiment extends Component {
             <table className='table'>
                 <thead>
                     <tr>
-                        <th>From</th>
-                        <th>Score</th>
-                        <th>Subject</th>
-                        <th className={css}>Key phrases</th>
-                        <th className={css}>Body</th>
+                        <th className='mailFrom'>From</th>
+                        <th className='mailSentiment'> Score</th>
+                        <th className='mailSubject'>Subject</th>
+                        <th className={css + ' mailKeyPhrase'}>Key phrases</th>
+                        <th className={css + ' mailBody'}>Body</th>
                     </tr>
                 </thead>
                 <tbody>
                     {emailList.map(mail =>
                         <tr key={mail.analysedTimestampUtc} className={mail.sentimentCssClass}>
-                            <td>{mail.fromAddresses}</td>
-                            <td className="mailSentiment">{mail.sentimentClassification}</td>
-                            <td><div className='trow'>{mail.subject}</div></td>
-                            <td className={css}><div className='trow'>{mail.sentimentKeyPhrases}</div></td>
-                            <td className={css}><div className='trow'>{mail.sanitisedBody}</div></td>
+                            <td className='mailFrom'>{mail.fromAddresses}</td>
+                            <td className='mailSentiment'>{mail.sentimentClassification}</td>
+                            <td className='mailSubject'>{mail.subject}</td>
+                            <td className={css + ' mailKeyPhrase'}><div className='limit-row-height'>{mail.sentimentKeyPhrases}</div></td>
+                                <td className={css + ' mailBody'}><div className='limit-row-height'>{mail.sanitisedBody}</div></td>
                         </tr>
                     )}
                 </tbody>

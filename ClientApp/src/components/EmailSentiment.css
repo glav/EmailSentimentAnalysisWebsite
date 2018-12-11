@@ -20,8 +20,23 @@ tbody tr {
     white-space: pre-wrap;
 }
 
-.trow {
+.limit-row-height {
     max-height: 13em;
-    overflow-y:auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.mailSubject {
+    min-width:15rem;
+}
+.mailFrom {
+    max-width: 20rem;
+    text-overflow:ellipsis;
+    overflow-x:hidden;
+    white-space: nowrap;
+}
+.mailSentiment {
+    max-width: 60px;
+    text-overflow:ellipsis;
     overflow-x:hidden;
 }
