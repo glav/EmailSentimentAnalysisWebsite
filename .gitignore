@@ -235,3 +235,5 @@ _Pvt_Extensions
 
 # VSCode
 /.vscode
+/Infrastructure/.terraform
+/Infrastructure/setup-key-vars.ps1
