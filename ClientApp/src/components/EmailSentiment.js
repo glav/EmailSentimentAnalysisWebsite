@@ -7,11 +7,15 @@ export class EmailSentiment extends Component {
         super(props);
         this.state = { emailList: [], loading: true, expanded: false };
 
-        fetch('api/EmailSentiment/LatestEmailSentimentAsync')
-            .then(response => response.json())
-            .then(data => {
-                this.setState({ emailList: data, loading: false, expanded: false });
-            });
+        setInterval(() => {
+            this.setState({ loading: true });
+            fetch('api/EmailSentiment/LatestEmailSentimentAsync')
+                .then(response => response.json())
+                .then(data => {
+                    this.setState({ emailList: data, loading: false, expanded: false });
+                });
+
+        }, 5000);
         this.onExpand = this.onExpand.bind(this);
     }
 
@@ -48,19 +52,26 @@ export class EmailSentiment extends Component {
     }
 
     render() {
-        let contents = this.state.loading
-            ? <div className='loading-progress'><img src='images/loading.gif' /><em>Loading...</em></div>
+        console.log(this.state.emailList);
+
+        let tableContents = this.state.emailList.length === 0
+            ? ''
             : EmailSentiment.renderEmailSentimentTable(this.state.emailList, this.state.expanded);
+        let loadingContent = this.state.loading
+            ? <div className='loading-progress'><img src='images/loading.gif' /><em>Loading...</em></div>
+            : '';
+
 
         return (
             <div>
                 <h1>Email Sentiment</h1>
                 <p>This is the latest sentiment analysis of collected email.</p>
-                <div>
+                <div className='interactive-content'>
                     <button onClick={this.onExpand}>Toggle Content Expansion</button>
+                    {loadingContent}
                 </div>
 
-                {contents}
+                {tableContents}
             </div>
         );
     }

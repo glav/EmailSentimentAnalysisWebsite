@@ -41,6 +41,12 @@ tbody tr {
     overflow-x:hidden;
 }
 
+.interactive-content button, .interactive-content div {
+    display:inline;
+}
+.interactive-content button {
+    margin: 1em;
+}
 .loading-progress {
     padding: 1em;
 }
