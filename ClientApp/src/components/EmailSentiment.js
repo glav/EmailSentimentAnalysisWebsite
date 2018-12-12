@@ -52,8 +52,6 @@ export class EmailSentiment extends Component {
     }
 
     render() {
-        console.log(this.state.emailList);
-
         let tableContents = this.state.emailList.length === 0
             ? ''
             : EmailSentiment.renderEmailSentimentTable(this.state.emailList, this.state.expanded);
