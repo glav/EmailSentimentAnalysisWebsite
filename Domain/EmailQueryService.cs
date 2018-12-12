@@ -24,8 +24,24 @@ namespace EmailSentimentAnalysisWebsite.Domain
                 data = CreateDummyData();
             } else
             {
-                var result = await _client.GetStringAsync(_config.ApiEndpoint);
-                data = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<EmailSentimentModel>>(result);
+                try
+                {
+                    var result = await _client.GetStringAsync(_config.ApiEndpoint);
+                    data = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<EmailSentimentModel>>(result);
+                } catch (System.Net.Http.HttpRequestException hex)
+                {
+                    data = new List<EmailSentimentModel>(new EmailSentimentModel[]
+                    {
+                        new EmailSentimentModel { FromAddresses="HTTP Error", Subject=hex.Message}
+                    });
+                } catch (Exception ex)
+                {
+                    data = new List<EmailSentimentModel>(new EmailSentimentModel[]
+                    {
+                        new EmailSentimentModel { FromAddresses="Error", Subject=ex.Message}
+                    });
+
+                }
             }
 
             data.ToList().ForEach(m =>

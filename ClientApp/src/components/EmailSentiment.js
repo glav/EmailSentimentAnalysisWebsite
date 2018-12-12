@@ -49,7 +49,7 @@ export class EmailSentiment extends Component {
 
     render() {
         let contents = this.state.loading
-            ? <p><em>Loading...</em></p>
+            ? <div className='loading-progress'><img src='images/loading.gif' /><em>Loading...</em></div>
             : EmailSentiment.renderEmailSentimentTable(this.state.emailList, this.state.expanded);
 
         return (
