@@ -36,10 +36,17 @@ namespace EmailSentimentAnalysisWebsite
         private void ConfigureDependencies(IServiceCollection services)
         {
             services.AddScoped(typeof(IEmailQueryService), typeof(EmailQueryService));
-            var endpoint = (string)Configuration.GetValue(typeof(string), "ApiEndpoint");
-            var useDummyValue = (bool)Configuration.GetValue(typeof(bool), "UseDummyData");
-            var config = new AppSettingsConfig { ApiEndpoint = endpoint, UseDummyData = useDummyValue };
+            var config = GetConfig();
             services.AddSingleton(typeof(AppSettingsConfig), config);
+        }
+
+        private AppSettingsConfig GetConfig()
+        {
+            var endpoint = (string)Configuration.GetValue(typeof(string), "ApiEndpoint");
+            var useDummyValue = (string)Configuration.GetValue(typeof(string), "UseDummyData");
+            var useDummyFlag = !string.IsNullOrWhiteSpace(useDummyValue) && useDummyValue.ToUpperInvariant() == "true";
+            var config = new AppSettingsConfig { ApiEndpoint = endpoint, UseDummyData = useDummyFlag };
+            return config;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
