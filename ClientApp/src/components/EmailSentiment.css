@@ -1,3 +1,7 @@
+.sentiment-awesome {
+    color: rgb(109, 242, 64);
+}
+
 .sentiment-great {
     color: rgba(62, 205, 14, 1);
 }
@@ -7,6 +11,11 @@
 .sentiment-neutral {
     color:blue;
 }
+
+.sentiment-glum {
+    color: #f8a971
+}
+
 .sentiment-not-ok {
     color: orange;
 }

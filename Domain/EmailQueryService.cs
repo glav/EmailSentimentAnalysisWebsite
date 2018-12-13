@@ -46,7 +46,13 @@ namespace EmailSentimentAnalysisWebsite.Domain
 
             data.ToList().ForEach(m =>
             {
-                m.ToDescriptiveSentiment();
+                try
+                {
+                    m.ToDescriptiveSentiment();
+                } catch (Exception ex)
+                {
+                    m.FromAddresses = "error";
+                }
             });
 
 
