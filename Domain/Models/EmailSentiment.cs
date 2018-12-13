@@ -10,6 +10,7 @@ namespace EmailSentimentAnalysisWebsite.Domain.Models
         public string OrignalBody {get;set;}
         public string SanitisedBody {get;set;}
         public double SentimentClassification {get;set;}
+        public string SentimentDescription { get; set; }
         public string SentimentKeyPhrases {get;set;}
         public DateTime AnalysedTimestampUtc {get;set;}
         public string SentimentCssClass {get ;set;}

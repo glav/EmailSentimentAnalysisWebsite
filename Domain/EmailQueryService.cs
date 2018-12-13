@@ -46,7 +46,7 @@ namespace EmailSentimentAnalysisWebsite.Domain
 
             data.ToList().ForEach(m =>
             {
-                m.SentimentCssClass = m.SentimentClassification.ToSentimentStyle();
+                m.ToDescriptiveSentiment();
             });
 
 

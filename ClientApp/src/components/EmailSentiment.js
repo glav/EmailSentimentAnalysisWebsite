@@ -30,8 +30,9 @@ export class EmailSentiment extends Component {
                 <thead>
                     <tr>
                         <th className='mailFrom'>From</th>
-                        <th className='mailSentiment'> Score</th>
                         <th className='mailSubject'>Subject</th>
+                        <th className='mailSentimentDescription'>Sentiment</th>
+                        <th className={css + ' mailSentiment'}> Score</th>
                         <th className={css + ' mailKeyPhrase'}>Key phrases</th>
                         <th className={css + ' mailBody'}>Body</th>
                     </tr>
@@ -40,8 +41,9 @@ export class EmailSentiment extends Component {
                     {emailList.map(mail =>
                         <tr key={mail.analysedTimestampUtc} className={mail.sentimentCssClass}>
                             <td className='mailFrom'>{mail.fromAddresses}</td>
-                            <td className='mailSentiment'>{mail.sentimentClassification}</td>
                             <td className='mailSubject'>{mail.subject}</td>
+                            <td className='mailSentimentDescription'>{mail.sentimentDescription}</td>
+                            <td className={css + ' mailSentiment'}>{mail.sentimentClassification}</td>
                             <td className={css + ' mailKeyPhrase'}><div className='limit-row-height'>{mail.sentimentKeyPhrases}</div></td>
                                 <td className={css + ' mailBody'}><div className='limit-row-height'>{mail.sanitisedBody}</div></td>
                         </tr>

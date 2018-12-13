@@ -1,3 +1,5 @@
+using EmailSentimentAnalysisWebsite.Domain.Models;
+
 namespace EmailSentimentAnalysisWebsite.Domain
 {
     public static class SentimentStyleCalculatorExtensions
@@ -8,25 +10,28 @@ namespace EmailSentimentAnalysisWebsite.Domain
         const string styleNotOk = "sentiment-not-ok";
         const string styleBad = "sentiment-bad";
 
-        public static string ToSentimentStyle(this double sentimentValue)
+        public static void ToDescriptiveSentiment(this EmailSentimentModel model)
         {
-            if (sentimentValue > 0.85)
+            if (model.SentimentClassification > 0.85)
             {
-                return styleGreat;
+                model.SentimentCssClass = styleGreat;
             }
-            if (sentimentValue > 0.55)
+            if (model.SentimentClassification > 0.55)
             {
-                return styleOk;
+                model.SentimentCssClass = styleOk;
             }
-            if (sentimentValue >= 0.45)
+            if (model.SentimentClassification >= 0.45)
             {
-                return styleNeutral;
+                model.SentimentCssClass = styleNeutral;
             }
-            if (sentimentValue > 0.25)
+            if (model.SentimentClassification > 0.25)
             {
-                return styleNotOk;
+                model.SentimentCssClass = styleNotOk;
             }
-            return styleBad;
+            model.SentimentCssClass = styleBad;
+
+            var scoreEngine = new Glav.CognitiveServices.FluentApi.Core.ScoreEvaluation.DefaultScoreEvaluationEngine(new Glav.CognitiveServices.FluentApi.Core.ScoreEvaluation.DefaultScoreLevels());
+            model.SentimentDescription = scoreEngine.EvaluateScore(model.SentimentClassification).Name;
         }
 
     }
