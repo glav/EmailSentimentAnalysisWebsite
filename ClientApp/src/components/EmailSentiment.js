@@ -12,7 +12,7 @@ export class EmailSentiment extends Component {
             fetch('api/EmailSentiment/LatestEmailSentimentAsync')
                 .then(response => response.json())
                 .then(data => {
-                    this.setState({ emailList: data, loading: false, expanded: false });
+                    this.setState({ emailList: data, loading: false});
                 });
 
         }, 5000);
