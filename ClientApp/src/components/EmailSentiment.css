@@ -45,13 +45,17 @@ tbody tr {
     white-space: nowrap;
 }
 .mailSentiment {
-    max-width: 60px;
+    max-width: 5em;
     text-overflow:ellipsis;
     overflow-x:hidden;
 }
 
+.mailKeyPhrase {
+    max-width: 25em;
+}
+
 .interactive-content button, .interactive-content div {
-    display:inline;
+    display: inline;
 }
 .interactive-content button {
     margin: 1em;
