@@ -25,5 +25,11 @@ namespace EmailSentimentAnalysisWebsite.Controllers
             return await _emailQueryService.GetLatestEmailSentimentAsync();
         }
 
+        [HttpGet("[action]")]
+        public async Task<string> CurrentStatusAsync()
+        {
+            return await _emailQueryService.GetCurrentprocessingStatus();
+        }
+
     }
 }

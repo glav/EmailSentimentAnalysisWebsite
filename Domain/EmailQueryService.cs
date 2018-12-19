@@ -59,7 +59,7 @@ namespace EmailSentimentAnalysisWebsite.Domain
             return data;
         }
 
-        public async Task<string> GetCurrentprocessingStatus()
+        public async Task<string> GetCurrentProcessingStatus()
         {
             if (_config.UseDummyData)
             {
