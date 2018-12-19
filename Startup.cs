@@ -43,9 +43,10 @@ namespace EmailSentimentAnalysisWebsite
         private AppSettingsConfig GetConfig()
         {
             var endpoint = (string)Configuration.GetValue(typeof(string), "ApiEndpoint");
+            var statusEndpoint = (string)Configuration.GetValue(typeof(string), "ApiStatusEndpoint");
             var useDummyValue = (string)Configuration.GetValue(typeof(string), "UseDummyData");
             var useDummyFlag = !string.IsNullOrWhiteSpace(useDummyValue) && useDummyValue.ToLowerInvariant() == "true";
-            var config = new AppSettingsConfig { ApiEndpoint = endpoint, UseDummyData = useDummyFlag };
+            var config = new AppSettingsConfig { ApiEndpoint = endpoint, UseDummyData = useDummyFlag, ApiStatusEndpoint = statusEndpoint };
             return config;
         }
 

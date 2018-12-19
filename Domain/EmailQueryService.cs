@@ -59,6 +59,30 @@ namespace EmailSentimentAnalysisWebsite.Domain
             return data;
         }
 
+        public async Task<string> GetCurrentprocessingStatus()
+        {
+            if (_config.UseDummyData)
+            {
+                return DateTime.Now.Millisecond < 500 ? "processing mail" : "collecting mail";
+            }
+            else
+            {
+                try
+                {
+                    var result = await _client.GetStringAsync(_config.ApiStatusEndpoint);
+                    return $"Status: {result}";
+                }
+                catch (System.Net.Http.HttpRequestException hex)
+                {
+                    return $"Status: HTTP Error: [{hex.Message}]";
+                }
+                catch (Exception ex)
+                {
+                    return $"Status: Error [{ex.Message}]";
+                }
+            }
+        }
+
         private static List<EmailSentimentModel> CreateDummyData()
         {
             #region DummyData
@@ -113,5 +137,6 @@ namespace EmailSentimentAnalysisWebsite.Domain
 
             return dummyList;
         }
+
     }
 }
