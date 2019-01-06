@@ -16,4 +16,5 @@ ReactDOM.render(
   </BrowserRouter>,
   rootElement);
 
-registerServiceWorker();
+// Disable offline cachine as it screws with redirection when authenticating for AppService auth.
+//registerServiceWorker();

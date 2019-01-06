@@ -49,6 +49,9 @@ namespace EmailSentimentAnalysisWebsite.Domain
                 try
                 {
                     m.ToDescriptiveSentiment();
+
+                    var aest = TimeZoneInfo.FindSystemTimeZoneById("AUS Eastern Standard Time");
+                    m.AnalysedTimestampAest = TimeZoneInfo.ConvertTimeFromUtc(m.AnalysedTimestampUtc, aest).ToString("dd-MM-yyyy");
                 } catch (Exception ex)
                 {
                     m.FromAddresses = $"error [{ex.Message}]";

@@ -44,6 +44,12 @@ tbody tr {
     overflow-x:hidden;
     white-space: nowrap;
 }
+.mailDate {
+    max-width: 6em;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
 .mailSentiment {
     max-width: 5em;
     text-overflow:ellipsis;
