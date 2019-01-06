@@ -28,7 +28,7 @@ namespace EmailSentimentAnalysisWebsite.Controllers
         [HttpGet("[action]")]
         public async Task<string> CurrentStatusAsync()
         {
-            return await _emailQueryService.GetCurrentprocessingStatus();
+            return await _emailQueryService.GetCurrentProcessingStatus();
         }
 
     }

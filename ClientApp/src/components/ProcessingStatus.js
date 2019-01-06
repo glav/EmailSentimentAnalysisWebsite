@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import './EmailSentiment.css';
 
-export class EmailSentiment extends Component {
+export class ProcessingStatus extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { emailList: [], loading: true, expanded: false };
+        this.state = { message:'', loading:false };
 
         setInterval(() => {
             this.setState({ loading: true });

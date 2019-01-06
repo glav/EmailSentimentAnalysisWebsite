@@ -51,7 +51,7 @@ namespace EmailSentimentAnalysisWebsite.Domain
                     m.ToDescriptiveSentiment();
                 } catch (Exception ex)
                 {
-                    m.FromAddresses = "error";
+                    m.FromAddresses = $"error [{ex.Message}]";
                 }
             });
 

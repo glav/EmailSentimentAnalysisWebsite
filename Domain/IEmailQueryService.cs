@@ -6,6 +6,6 @@ namespace EmailSentimentAnalysisWebsite.Domain
     public interface IEmailQueryService
     {
         Task<IEnumerable<Models.EmailSentimentModel>> GetLatestEmailSentimentAsync();
-        Task<string> GetCurrentprocessingStatus();
+        Task<string> GetCurrentProcessingStatus();
     }
 }
